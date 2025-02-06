@@ -11,7 +11,7 @@ project_key = os.environ['PROJECT_KEY']
 org_id = os.environ['ORG_ID']
 
 
-client = OpenAI(api_key=openai_token)
+openai_client = OpenAI(api_key=openai_token)
 
 
 class MyClient(discord.Client):
@@ -26,7 +26,7 @@ class MyClient(discord.Client):
         print(f'Message from {message.author}: {message.content}')
         channel = message.channel
         
-        response = client.chat.completions.create(
+        response = openai_client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[{
                 "role": "user",
